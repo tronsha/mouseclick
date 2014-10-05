@@ -20,165 +20,141 @@ __fastcall TMausForm::TMausForm(TComponent* Owner) : TForm(Owner)
 #define pfeilspitze_left -5
 
 int taste = 0;
-int milli = 1000;              
+int milli = 1000;
 int sicher = 1;
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MouseTimerTimer(TObject *Sender)
 {
-  int x = MausForm->Edit_x->Text.ToInt();
-  int y = MausForm->Edit_y->Text.ToInt();
+    int x = MausForm->Edit_x->Text.ToInt();
+    int y = MausForm->Edit_y->Text.ToInt();
 
-  int randzeit = rand()%180+60;
+    int randzeit = rand()%180+60;
 
-  if(random1->Checked == true)
-  {
-    EditTimer->Text = randzeit;
-    MausForm->MouseTimer->Interval = randzeit*milli;
-  }
+    if(random1->Checked == true)
+    {
+        EditTimer->Text = randzeit;
+        MausForm->MouseTimer->Interval = randzeit*milli;
+    }
 
-  if(FindWindow(NULL, "WORLD OF WARCRAFT") && 0)
-  {
-    Close();
-  }
-  else
-  {
     if(taste == 2)
     {
-      keybd_event((0x41+ComboBox->ItemIndex), 0x0, KEYEVENTF_EXTENDEDKEY | 0, 0 );
-      keybd_event((0x41+ComboBox->ItemIndex), 0x0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
-
-      //keybd_event(VK_SPACE, 0x45, KEYEVENTF_EXTENDEDKEY | 0, 0 );
-      //keybd_event(VK_SPACE, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
-
-      //EditTimer->Text = ((rand()%5)+1);
-      //MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
-
-      //SetCursorPos(x, y);
-      //mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
-      //mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-      //mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-      //mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        keybd_event((0x41+ComboBox->ItemIndex), 0x0, KEYEVENTF_EXTENDEDKEY | 0, 0 );
+        keybd_event((0x41+ComboBox->ItemIndex), 0x0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
     }
     else
     {
-      SetCursorPos(x, y);
+        SetCursorPos(x, y);
 
-      if(taste == 1)
-      {
-        mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
-        mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-      }
-      else
-      {
-        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-      }
+        if(taste == 1)
+        {
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+        }
+        else
+        {
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        }
     }
-  }
 
-  MausForm->FocusTimer->Enabled = true;
+    MausForm->FocusTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::FocusTimerTimer(TObject *Sender)
 {
-  MausForm->EndeButton->SetFocus();
-  MausForm->FocusTimer->Enabled = false;
+    MausForm->EndeButton->SetFocus();
+    MausForm->FocusTimer->Enabled = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::EditKeyPress(TObject *Sender, char &Key)
 {
-  if (((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
-    Key = Key;
-  else
-    Key = '\0';
+    if (((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
+        Key = Key;
+    else
+        Key = '\0';
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::FormMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 {
-  //Label_x_now->Caption = X + MausForm->Left;
-  //Label_y_now->Caption = Y + MausForm->Top;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::FormCreate(TObject *Sender)
 {
-  //MausForm->Brush->Style = bsClear;
-  //Edit_x->Text = MausForm->Left + pfeilspitze_left;
-  //Edit_y->Text = MausForm->Top + pfeilspitze_top;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::StartButtonClick(TObject *Sender)
 {
-  if(sicher)
-  {
-    if(milli == 1000)
+    if(sicher)
     {
-      if (MausForm->EditTimer->Text.ToInt() < 10)
-      {
-        MausForm->EditTimer->Text = 10;
-      }
+        if(milli == 1000)
+        {
+            if (MausForm->EditTimer->Text.ToInt() < 10)
+            {
+                MausForm->EditTimer->Text = 10;
+            }
+        }
+        else if(milli == 1)
+        {
+            if (MausForm->EditTimer->Text.ToInt() < 10000)
+            {
+                MausForm->EditTimer->Text = 10000;
+            }
+        }
     }
-    else if(milli == 1)
+    else
     {
-      if (MausForm->EditTimer->Text.ToInt() < 10000)
-      {
-        MausForm->EditTimer->Text = 10000;
-      }
+        if(MausForm->EditTimer->Text.ToInt() < 1)
+        {
+            MausForm->EditTimer->Text = 1;
+        }
     }
-  }
-  else
-  {
-    if(MausForm->EditTimer->Text.ToInt() < 1)
-    {
-      MausForm->EditTimer->Text = 1;
-    }
-  }
-  MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
-  MausForm->MouseTimer->Enabled = true;
-  MausForm->StopButton->Enabled = true;
-  MausForm->StartButton->Enabled = false;
-  MausForm->GetOrtButton->Enabled = false;
-  MausForm->MenuStop->Enabled = true;
-  MausForm->MenuStart->Enabled = false;
-  MausForm->MenuSet->Enabled = false;
-  MausForm->Edit_x->Enabled = false;
-  MausForm->Edit_y->Enabled = false;
-  MausForm->EditTimer->Enabled = false;
-  MausForm->ComboBox->Enabled = false;
+    MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
+    MausForm->MouseTimer->Enabled = true;
+    MausForm->StopButton->Enabled = true;
+    MausForm->StartButton->Enabled = false;
+    MausForm->GetOrtButton->Enabled = false;
+    MausForm->MenuStop->Enabled = true;
+    MausForm->MenuStart->Enabled = false;
+    MausForm->MenuSet->Enabled = false;
+    MausForm->Edit_x->Enabled = false;
+    MausForm->Edit_y->Enabled = false;
+    MausForm->EditTimer->Enabled = false;
+    MausForm->ComboBox->Enabled = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::GetOrtButtonClick(TObject *Sender)
 {
-  Edit_x->Text = MausForm->Left + pfeilspitze_left;
-  Edit_y->Text = MausForm->Top + pfeilspitze_top;
+    Edit_x->Text = MausForm->Left + pfeilspitze_left;
+    Edit_y->Text = MausForm->Top + pfeilspitze_top;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::StopButtonClick(TObject *Sender)
 {
-  MausForm->MouseTimer->Enabled = false;
-  MausForm->StopButton->Enabled = false;
-  MausForm->StartButton->Enabled = true;
-  MausForm->GetOrtButton->Enabled = true;
-  MausForm->MenuStop->Enabled = false;
-  MausForm->MenuStart->Enabled = true;
-  MausForm->MenuSet->Enabled = true;
-  MausForm->Edit_x->Enabled = true;
-  MausForm->Edit_y->Enabled = true;
-  MausForm->EditTimer->Enabled = true;
-  MausForm->ComboBox->Enabled = true;
+    MausForm->MouseTimer->Enabled = false;
+    MausForm->StopButton->Enabled = false;
+    MausForm->StartButton->Enabled = true;
+    MausForm->GetOrtButton->Enabled = true;
+    MausForm->MenuStop->Enabled = false;
+    MausForm->MenuStart->Enabled = true;
+    MausForm->MenuSet->Enabled = true;
+    MausForm->Edit_x->Enabled = true;
+    MausForm->Edit_y->Enabled = true;
+    MausForm->EditTimer->Enabled = true;
+    MausForm->ComboBox->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::EndeButtonClick(TObject *Sender)
 {
-  Close();
+    Close();
 }
 //---------------------------------------------------------------------------
 int igOldMouseX, igOldMouseY;
@@ -186,198 +162,196 @@ int igOldMouseX, igOldMouseY;
 
 void __fastcall TMausForm::ImagePfeilMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
-  if(Button == mbLeft)
-  {
-    igOldMouseX = X;
-    igOldMouseY = Y;
-  }
+    if(Button == mbLeft)
+    {
+        igOldMouseX = X;
+        igOldMouseY = Y;
+    }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::ImagePfeilMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 {
-  int iDeltaX, iDeltaY;
-  if(Shift.Contains(ssLeft))
-  {
-    iDeltaX = X - igOldMouseX;
-    iDeltaY = Y - igOldMouseY;
-    Top = Top + iDeltaY;
-    Left = Left + iDeltaX;
-  }
-  Label_x_now->Caption = MausForm->Left + pfeilspitze_left;
-  Label_y_now->Caption = MausForm->Top + pfeilspitze_top;
+    int iDeltaX, iDeltaY;
+    if(Shift.Contains(ssLeft))
+    {
+        iDeltaX = X - igOldMouseX;
+        iDeltaY = Y - igOldMouseY;
+        Top = Top + iDeltaY;
+        Left = Left + iDeltaX;
+    }
+    Label_x_now->Caption = MausForm->Left + pfeilspitze_left;
+    Label_y_now->Caption = MausForm->Top + pfeilspitze_top;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MenuSetClick(TObject *Sender)
 {
-  Edit_x->Text = MausForm->Left + pfeilspitze_left;
-  Edit_y->Text = MausForm->Top + pfeilspitze_top;
+    Edit_x->Text = MausForm->Left + pfeilspitze_left;
+    Edit_y->Text = MausForm->Top + pfeilspitze_top;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MenuExitClick(TObject *Sender)
 {
-  Close();
+    Close();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MenuStartClick(TObject *Sender)
 {
-  if(sicher)
-  {
-    if(milli == 1000)
+    if(sicher)
     {
-      if(MausForm->EditTimer->Text.ToInt() < 10)
-      {
-        MausForm->EditTimer->Text = 10;
-      }
+        if(milli == 1000)
+        {
+            if(MausForm->EditTimer->Text.ToInt() < 10)
+            {
+                MausForm->EditTimer->Text = 10;
+            }
+        }
+        else if(milli == 1)
+        {
+            if(MausForm->EditTimer->Text.ToInt() < 10000)
+            {
+                MausForm->EditTimer->Text = 10000;
+            }
+        }
     }
-    else if(milli == 1)
+    else
     {
-      if(MausForm->EditTimer->Text.ToInt() < 10000)
-      {
-        MausForm->EditTimer->Text = 10000;
-      }
+        if(MausForm->EditTimer->Text.ToInt() < 1)
+        {
+            MausForm->EditTimer->Text = 1;
+        }
     }
-  }
-  else
-  {
-    if(MausForm->EditTimer->Text.ToInt() < 1)
-    {
-      MausForm->EditTimer->Text = 1;
-    }
-  }
-  MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
-  MausForm->MouseTimer->Enabled = true;
-  MausForm->StopButton->Enabled = true;
-  MausForm->StartButton->Enabled = false;
-  MausForm->GetOrtButton->Enabled = false;
-  MausForm->MenuStop->Enabled = true;
-  MausForm->MenuStart->Enabled = false;
-  MausForm->MenuSet->Enabled = false;
-  MausForm->Edit_x->Enabled = false;
-  MausForm->Edit_y->Enabled = false;
-  MausForm->EditTimer->Enabled = false;
+    MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
+    MausForm->MouseTimer->Enabled = true;
+    MausForm->StopButton->Enabled = true;
+    MausForm->StartButton->Enabled = false;
+    MausForm->GetOrtButton->Enabled = false;
+    MausForm->MenuStop->Enabled = true;
+    MausForm->MenuStart->Enabled = false;
+    MausForm->MenuSet->Enabled = false;
+    MausForm->Edit_x->Enabled = false;
+    MausForm->Edit_y->Enabled = false;
+    MausForm->EditTimer->Enabled = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MenuStopClick(TObject *Sender)
 {
-  MausForm->MouseTimer->Enabled = false;
-  MausForm->StopButton->Enabled = false;
-  MausForm->StartButton->Enabled = true;
-  MausForm->GetOrtButton->Enabled = true;
-  MausForm->MenuStop->Enabled = false;
-  MausForm->MenuStart->Enabled = true;
-  MausForm->MenuSet->Enabled = true;
-  MausForm->Edit_x->Enabled = true;
-  MausForm->Edit_y->Enabled = true;
-  MausForm->EditTimer->Enabled = true;
+    MausForm->MouseTimer->Enabled = false;
+    MausForm->StopButton->Enabled = false;
+    MausForm->StartButton->Enabled = true;
+    MausForm->GetOrtButton->Enabled = true;
+    MausForm->MenuStop->Enabled = false;
+    MausForm->MenuStart->Enabled = true;
+    MausForm->MenuSet->Enabled = true;
+    MausForm->Edit_x->Enabled = true;
+    MausForm->Edit_y->Enabled = true;
+    MausForm->EditTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::EditTimerKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
 {
-  if(EditTimer->Text != "")
-  {
-    if(milli == 1)
+    if(EditTimer->Text != "")
     {
-      double zeit = EditTimer->Text.ToDouble();
-      if (zeit > 86400000)
-        EditTimer->Text = "86400000";
+        if(milli == 1)
+        {
+            double zeit = EditTimer->Text.ToDouble();
+            if (zeit > 86400000)
+                EditTimer->Text = "86400000";
+        }
+        else if(milli == 1000)
+        {
+            double zeit = EditTimer->Text.ToDouble();
+            if(zeit > 86400)
+                EditTimer->Text = "86400";
+        }
     }
-    else if(milli == 1000)
-    {
-      double zeit = EditTimer->Text.ToDouble();
-      if(zeit > 86400)
-        EditTimer->Text = "86400";
-    }
-  }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::sekunden1Click(TObject *Sender)
 {
-  if(milli == 1)
-  {
-    milli = 1000;
-    ShowMessage("Timer in Sekunden");
-    if(EditTimer->Text != "")
+    if(milli == 1)
     {
-      double zeit = EditTimer->Text.ToDouble();
-      EditTimer->Text = zeit / 1000;
+        milli = 1000;
+        ShowMessage("Timer in Sekunden");
+        if(EditTimer->Text != "")
+        {
+            double zeit = EditTimer->Text.ToDouble();
+            EditTimer->Text = zeit / 1000;
+        }
     }
-  }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::millisekunden1Click(TObject *Sender)
 {
-  if(milli == 1000)
-  {
-    milli = 1;
-    ShowMessage("Timer in Millisekunden");
-    if(EditTimer->Text != "")
+    if(milli == 1000)
     {
-      double zeit = EditTimer->Text.ToDouble();
-      EditTimer->Text = zeit * 1000;
+        milli = 1;
+        ShowMessage("Timer in Millisekunden");
+        if(EditTimer->Text != "")
+        {
+            double zeit = EditTimer->Text.ToDouble();
+            EditTimer->Text = zeit * 1000;
+        }
     }
-  }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::sicher1Click(TObject *Sender)
 {
-  sicher = 0;
-  ShowMessage("Vorsicht! Bei zu kleinen Zeitintervallen können Sie die Kontrolle über Ihr System verlieren.");
+    sicher = 0;
+    ShowMessage("Vorsicht! Bei zu kleinen Zeitintervallen kï¿½nnen Sie die Kontrolle ï¿½ber Ihr System verlieren.");
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::rechts1Click(TObject *Sender)
 {
-  taste = 1;
-  ShowMessage("Rechtsklick");
-  PanelZiel->Visible = true;
-  PanelOrt->Visible = true;
-  ComboBox->Visible = false;
+    taste = 1;
+    ShowMessage("Rechtsklick");
+    PanelZiel->Visible = true;
+    PanelOrt->Visible = true;
+    ComboBox->Visible = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::links1Click(TObject *Sender)
 {
-  taste = 0;
-  ShowMessage("Linksklick");
-  PanelZiel->Visible = true;
-  PanelOrt->Visible = true;
-  ComboBox->Visible = false;
+    taste = 0;
+    ShowMessage("Linksklick");
+    PanelZiel->Visible = true;
+    PanelOrt->Visible = true;
+    ComboBox->Visible = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::taste1Click(TObject *Sender)
 {
-  taste = 2;
-  ShowMessage("Tasten Modus");
-  //EditTimer->Text = 120;
-  //MenuStartClick(Sender);
-  PanelZiel->Visible = false;
-  PanelOrt->Visible = false;
-  ComboBox->Visible = true;
+    taste = 2;
+    ShowMessage("Tasten Modus");
+    PanelZiel->Visible = false;
+    PanelOrt->Visible = false;
+    ComboBox->Visible = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::random1Click(TObject *Sender)
 {
-  if(random1->Checked == true)
-  {
-    random1->Checked = false;
-    ShowMessage("Random Aus");
-  }
-  else
-  {
-    random1->Checked = true;
-    ShowMessage("Random An");
-  }
+    if(random1->Checked == true)
+    {
+        random1->Checked = false;
+        ShowMessage("Random Aus");
+    }
+    else
+    {
+        random1->Checked = true;
+        ShowMessage("Random An");
+    }
 }
 //---------------------------------------------------------------------------
 
