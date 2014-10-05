@@ -4,7 +4,7 @@ object MausForm: TMausForm
   Cursor = crArrow
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsNone
-  Caption = ' Maus Klick'
+  Caption = 'MouseClick'
   ClientHeight = 193
   ClientWidth = 212
   Color = clBlack
@@ -16,8 +16,6 @@ object MausForm: TMausForm
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
-  OnMouseMove = FormMouseMove
   PixelsPerInch = 96
   TextHeight = 13
   object ImagePfeil: TImage
@@ -163,7 +161,7 @@ object MausForm: TMausForm
     object Label_y: TLabel
       Left = 8
       Top = 30
-      Width = 24
+      Width = 23
       Height = 19
       Caption = 'Y ='
       Font.Charset = ANSI_CHARSET
@@ -224,7 +222,7 @@ object MausForm: TMausForm
     object LabelSetTimer: TLabel
       Left = 8
       Top = 12
-      Width = 38
+      Width = 37
       Height = 19
       Caption = 'Timer:'
       Font.Charset = ANSI_CHARSET
@@ -383,19 +381,14 @@ object MausForm: TMausForm
         ShortCut = 16461
         OnClick = millisekunden1Click
       end
-      object sicher1: TMenuItem
-        Caption = 'sicher'
-        ShortCut = 49240
-        OnClick = sicher1Click
-      end
       object taste1: TMenuItem
         Caption = 'taste'
-        ShortCut = 49236
+        ShortCut = 16468
         OnClick = taste1Click
       end
       object random1: TMenuItem
         Caption = 'random'
-        ShortCut = 49234
+        ShortCut = 16466
         OnClick = random1Click
       end
     end

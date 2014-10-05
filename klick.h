@@ -43,7 +43,6 @@ __published:	// IDE-managed Components
     TMenuItem *links1;
     TMenuItem *sekunden1;
     TMenuItem *millisekunden1;
-    TMenuItem *sicher1;
     TMenuItem *taste1;
     TMenuItem *random1;
     TComboBox *ComboBox;
@@ -51,8 +50,6 @@ __published:	// IDE-managed Components
     void __fastcall FocusTimerTimer(TObject *Sender);
     void __fastcall StartButtonClick(TObject *Sender);
     void __fastcall EditKeyPress(TObject *Sender, char &Key);
-    void __fastcall FormMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-    void __fastcall FormCreate(TObject *Sender);
     void __fastcall EndeButtonClick(TObject *Sender);
     void __fastcall ImagePfeilMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
     void __fastcall ImagePfeilMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
@@ -65,7 +62,6 @@ __published:	// IDE-managed Components
     void __fastcall EditTimerKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
     void __fastcall sekunden1Click(TObject *Sender);
     void __fastcall millisekunden1Click(TObject *Sender);
-    void __fastcall sicher1Click(TObject *Sender);
     void __fastcall rechts1Click(TObject *Sender);
     void __fastcall links1Click(TObject *Sender);
     void __fastcall taste1Click(TObject *Sender);

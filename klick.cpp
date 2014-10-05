@@ -16,12 +16,11 @@ __fastcall TMausForm::TMausForm(TComponent* Owner) : TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-#define pfeilspitze_top 90
-#define pfeilspitze_left -5
+#define arrow_top 90
+#define arrow_left -5
 
-int taste = 0;
+int mode = 0;
 int milli = 1000;
-int sicher = 1;
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MouseTimerTimer(TObject *Sender)
@@ -37,7 +36,7 @@ void __fastcall TMausForm::MouseTimerTimer(TObject *Sender)
         MausForm->MouseTimer->Interval = randzeit*milli;
     }
 
-    if(taste == 2)
+    if(mode == 2)
     {
         keybd_event((0x41+ComboBox->ItemIndex), 0x0, KEYEVENTF_EXTENDEDKEY | 0, 0 );
         keybd_event((0x41+ComboBox->ItemIndex), 0x0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
@@ -46,7 +45,7 @@ void __fastcall TMausForm::MouseTimerTimer(TObject *Sender)
     {
         SetCursorPos(x, y);
 
-        if(taste == 1)
+        if(mode == 1)
         {
             mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
@@ -78,42 +77,23 @@ void __fastcall TMausForm::EditKeyPress(TObject *Sender, char &Key)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMausForm::FormMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
-{
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMausForm::FormCreate(TObject *Sender)
-{
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMausForm::StartButtonClick(TObject *Sender)
 {
-    if(sicher)
+    if(milli == 1000)
     {
-        if(milli == 1000)
+        if (MausForm->EditTimer->Text.ToInt() < 10)
         {
-            if (MausForm->EditTimer->Text.ToInt() < 10)
-            {
-                MausForm->EditTimer->Text = 10;
-            }
-        }
-        else if(milli == 1)
-        {
-            if (MausForm->EditTimer->Text.ToInt() < 10000)
-            {
-                MausForm->EditTimer->Text = 10000;
-            }
+            MausForm->EditTimer->Text = 10;
         }
     }
-    else
+    else if(milli == 1)
     {
-        if(MausForm->EditTimer->Text.ToInt() < 1)
+        if (MausForm->EditTimer->Text.ToInt() < 10000)
         {
-            MausForm->EditTimer->Text = 1;
+            MausForm->EditTimer->Text = 10000;
         }
     }
+
     MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
     MausForm->MouseTimer->Enabled = true;
     MausForm->StopButton->Enabled = true;
@@ -131,8 +111,8 @@ void __fastcall TMausForm::StartButtonClick(TObject *Sender)
 
 void __fastcall TMausForm::GetOrtButtonClick(TObject *Sender)
 {
-    Edit_x->Text = MausForm->Left + pfeilspitze_left;
-    Edit_y->Text = MausForm->Top + pfeilspitze_top;
+    Edit_x->Text = MausForm->Left + arrow_left;
+    Edit_y->Text = MausForm->Top + arrow_top;
 }
 //---------------------------------------------------------------------------
 
@@ -180,15 +160,15 @@ void __fastcall TMausForm::ImagePfeilMouseMove(TObject *Sender, TShiftState Shif
         Top = Top + iDeltaY;
         Left = Left + iDeltaX;
     }
-    Label_x_now->Caption = MausForm->Left + pfeilspitze_left;
-    Label_y_now->Caption = MausForm->Top + pfeilspitze_top;
+    Label_x_now->Caption = MausForm->Left + arrow_left;
+    Label_y_now->Caption = MausForm->Top + arrow_top;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMausForm::MenuSetClick(TObject *Sender)
 {
-    Edit_x->Text = MausForm->Left + pfeilspitze_left;
-    Edit_y->Text = MausForm->Top + pfeilspitze_top;
+    Edit_x->Text = MausForm->Left + arrow_left;
+    Edit_y->Text = MausForm->Top + arrow_top;
 }
 //---------------------------------------------------------------------------
 
@@ -200,30 +180,21 @@ void __fastcall TMausForm::MenuExitClick(TObject *Sender)
 
 void __fastcall TMausForm::MenuStartClick(TObject *Sender)
 {
-    if(sicher)
+    if(milli == 1000)
     {
-        if(milli == 1000)
+        if(MausForm->EditTimer->Text.ToInt() < 10)
         {
-            if(MausForm->EditTimer->Text.ToInt() < 10)
-            {
-                MausForm->EditTimer->Text = 10;
-            }
-        }
-        else if(milli == 1)
-        {
-            if(MausForm->EditTimer->Text.ToInt() < 10000)
-            {
-                MausForm->EditTimer->Text = 10000;
-            }
+            MausForm->EditTimer->Text = 10;
         }
     }
-    else
+    else if(milli == 1)
     {
-        if(MausForm->EditTimer->Text.ToInt() < 1)
+        if(MausForm->EditTimer->Text.ToInt() < 10000)
         {
-            MausForm->EditTimer->Text = 1;
+            MausForm->EditTimer->Text = 10000;
         }
     }
+
     MausForm->MouseTimer->Interval = MausForm->EditTimer->Text.ToInt()*milli;
     MausForm->MouseTimer->Enabled = true;
     MausForm->StopButton->Enabled = true;
@@ -278,7 +249,7 @@ void __fastcall TMausForm::sekunden1Click(TObject *Sender)
     if(milli == 1)
     {
         milli = 1000;
-        ShowMessage("Timer in Sekunden");
+        ShowMessage("Timer in Seconds");
         if(EditTimer->Text != "")
         {
             double zeit = EditTimer->Text.ToDouble();
@@ -293,7 +264,7 @@ void __fastcall TMausForm::millisekunden1Click(TObject *Sender)
     if(milli == 1000)
     {
         milli = 1;
-        ShowMessage("Timer in Millisekunden");
+        ShowMessage("Timer in Milliseconds");
         if(EditTimer->Text != "")
         {
             double zeit = EditTimer->Text.ToDouble();
@@ -303,17 +274,10 @@ void __fastcall TMausForm::millisekunden1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMausForm::sicher1Click(TObject *Sender)
-{
-    sicher = 0;
-    ShowMessage("Vorsicht! Bei zu kleinen Zeitintervallen k�nnen Sie die Kontrolle �ber Ihr System verlieren.");
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMausForm::rechts1Click(TObject *Sender)
 {
-    taste = 1;
-    ShowMessage("Rechtsklick");
+    mode = 1;
+    ShowMessage("Right Mouse Button");
     PanelZiel->Visible = true;
     PanelOrt->Visible = true;
     ComboBox->Visible = false;
@@ -322,8 +286,8 @@ void __fastcall TMausForm::rechts1Click(TObject *Sender)
 
 void __fastcall TMausForm::links1Click(TObject *Sender)
 {
-    taste = 0;
-    ShowMessage("Linksklick");
+    mode = 0;
+    ShowMessage("Left Mouse Button");
     PanelZiel->Visible = true;
     PanelOrt->Visible = true;
     ComboBox->Visible = false;
@@ -332,8 +296,8 @@ void __fastcall TMausForm::links1Click(TObject *Sender)
 
 void __fastcall TMausForm::taste1Click(TObject *Sender)
 {
-    taste = 2;
-    ShowMessage("Tasten Modus");
+    mode = 2;
+    ShowMessage("Keyboard Mode");
     PanelZiel->Visible = false;
     PanelOrt->Visible = false;
     ComboBox->Visible = true;
@@ -345,12 +309,12 @@ void __fastcall TMausForm::random1Click(TObject *Sender)
     if(random1->Checked == true)
     {
         random1->Checked = false;
-        ShowMessage("Random Aus");
+        ShowMessage("Random Off");
     }
     else
     {
         random1->Checked = true;
-        ShowMessage("Random An");
+        ShowMessage("Random On");
     }
 }
 //---------------------------------------------------------------------------
