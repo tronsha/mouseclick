@@ -1,124 +1,119 @@
-<?xml version='1.0' encoding='utf-8' ?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- C++Builder XML Project -->
 <PROJECT>
-  <MACROS>
-    <VERSION value="BCB.06.00"/>
-    <PROJECT value="MausKlick.exe"/>
-    <OBJFILES value="MausKlick.obj klick.obj"/>
-    <RESFILES value="MausKlick.res"/>
-    <IDLFILES value=""/>
-    <IDLGENFILES value=""/>
-    <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) klick.dfm"/>
-    <LIBFILES value=""/>
-    <LIBRARIES value="bcbie.lib vcl.lib rtl.lib"/>
-    <SPARELIBS value="rtl.lib vcl.lib bcbie.lib"/>
-    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi adortl.bpi 
-      bdertl.bpi vcldbx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi dss.bpi 
-      teeqr.bpi ibxpress.bpi dsnap.bpi vclie.bpi inetdb.bpi inet.bpi nmfast.bpi 
-      webdsnap.bpi dclocx.bpi bcb2kaxserver.bpi bcbie.bpi proide50.bpi"/>
-    <PATHCPP value=".;"/>
-    <PATHPAS value=".;"/>
-    <PATHRC value=".;"/>
-    <PATHASM value=".;"/>
-    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
-    <RELEASELIBPATH value="$(BCB)\lib\release"/>
-    <LINKER value="ilink32"/>
-    <USERDEFINES value="_DEBUG"/>
-    <SYSDEFINES value="NO_STRICT"/>
-    <MAINSOURCE value="MausKlick.cpp"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
-    <WARNINGS value="-w-par"/>
-    <OTHERFILES value=""/>
-  </MACROS>
-  <OPTIONS>
-    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
-    <CFLAG1 value="-Od -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 
-      -b- -k -y -v -vi- -c -tW -tWM"/>
-    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
-    <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
-    <OTHERFILES value=""/>
-  </OPTIONS>
-  <LINKER>
-    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
-    <ALLRES value="$(RESFILES)"/>
-    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
-    <OTHERFILES value=""/>
-  </LINKER>
-  <FILELIST>
-      <FILE FILENAME="MausKlick.cpp" FORMNAME="" UNITNAME="MausKlick" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="MausKlick.res" FORMNAME="" UNITNAME="MausKlick" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="klick.cpp" FORMNAME="MausForm" UNITNAME="klick" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-  </FILELIST>
-  <BUILDTOOLS>
-  </BUILDTOOLS>
+    <MACROS>
+        <VERSION value="BCB.06.00"/>
+        <PROJECT value="MouseClick.exe"/>
+        <OBJFILES value="MouseClick.obj MouseClickForm.obj"/>
+        <RESFILES value="MouseClick.res"/>
+        <IDLFILES value=""/>
+        <IDLGENFILES value=""/>
+        <DEFFILE value=""/>
+        <RESDEPEN value="$(RESFILES) MouseClickForm.dfm"/>
+        <LIBFILES value=""/>
+        <LIBRARIES value="bcbie.lib vcl.lib rtl.lib"/>
+        <SPARELIBS value="rtl.lib vcl.lib bcbie.lib"/>
+        <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi adortl.bpi bdertl.bpi vcldbx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi dss.bpi teeqr.bpi ibxpress.bpi dsnap.bpi vclie.bpi inetdb.bpi inet.bpi nmfast.bpi webdsnap.bpi dclocx.bpi bcb2kaxserver.bpi bcbie.bpi proide50.bpi"/>
+        <PATHCPP value=".;"/>
+        <PATHPAS value=".;"/>
+        <PATHRC value=".;"/>
+        <PATHASM value=".;"/>
+        <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+        <RELEASELIBPATH value="$(BCB)\lib\release"/>
+        <LINKER value="ilink32"/>
+        <USERDEFINES value="_DEBUG"/>
+        <SYSDEFINES value="NO_STRICT"/>
+        <MAINSOURCE value="MouseClick.cpp"/>
+        <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+        <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+        <WARNINGS value="-w-par"/>
+        <OTHERFILES value=""/>
+    </MACROS>
+    <OPTIONS>
+        <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
+        <CFLAG1 value="-Od -H=c:\PROGRA~1\borland\CBUILD~1\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+        <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+        <RFLAGS value=""/>
+        <AFLAGS value="/mx /w2 /zd"/>
+        <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+        <OTHERFILES value=""/>
+    </OPTIONS>
+    <LINKER>
+        <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+        <ALLRES value="$(RESFILES)"/>
+        <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+        <OTHERFILES value=""/>
+    </LINKER>
+    <FILELIST>
+        <FILE FILENAME="MouseClick.cpp" FORMNAME="" UNITNAME="MouseClick" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+        <FILE FILENAME="MouseClick.res" FORMNAME="" UNITNAME="MouseClick" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+        <FILE FILENAME="MouseClickForm.cpp" FORMNAME="MouseClickForm" UNITNAME="MouseClickForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+    </FILELIST>
+    <BUILDTOOLS>
+    </BUILDTOOLS>
+    <IDEOPTIONS>
+        [Version Info]
+        IncludeVerInfo=1
+        AutoIncBuild=1
+        MajorVer=1
+        MinorVer=0
+        Release=0
+        Build=0
+        Debug=0
+        PreRelease=0
+        Special=0
+        Private=0
+        DLL=0
+        Locale=1031
+        CodePage=1252
 
-  <IDEOPTIONS>
-[Version Info]
-IncludeVerInfo=1
-AutoIncBuild=1
-MajorVer=1
-MinorVer=0
-Release=0
-Build=0
-Debug=0
-PreRelease=0
-Special=0
-Private=0
-DLL=0
-Locale=1031
-CodePage=1252
+        [Version Info Keys]
+        CompanyName=
+        FileDescription=
+        FileVersion=1.0.0.2
+        InternalName=
+        LegalCopyright=(c) 2003 by Stefan Hüsges
+        LegalTrademarks=
+        OriginalFilename=
+        ProductName=
+        ProductVersion=1.0.0.0
+        Comments=
 
-[Version Info Keys]
-CompanyName=
-FileDescription=
-FileVersion=1.0.0.2
-InternalName=
-LegalCopyright=(c) 2003 by Stefan Hüsges
-LegalTrademarks=
-OriginalFilename=
-ProductName=
-ProductVersion=1.0.0.0
-Comments=
+        [HistoryLists\hlIncludePath]
+        Count=2
+        Item0=$(BCB)\include;$(BCB)\include\vcl
+        Item1=;$(BCB)\include;$(BCB)\include\vcl
 
-[HistoryLists\hlIncludePath]
-Count=2
-Item0=$(BCB)\include;$(BCB)\include\vcl
-Item1=;$(BCB)\include;$(BCB)\include\vcl
+        [HistoryLists\hlLibraryPath]
+        Count=2
+        Item0=$(BCB)\lib\obj;$(BCB)\lib
+        Item1=;$(BCB)\lib\obj;$(BCB)\lib
 
-[HistoryLists\hlLibraryPath]
-Count=2
-Item0=$(BCB)\lib\obj;$(BCB)\lib
-Item1=;$(BCB)\lib\obj;$(BCB)\lib
+        [HistoryLists\hlDebugSourcePath]
+        Count=1
+        Item0=$(BCB)\source\vcl
 
-[HistoryLists\hlDebugSourcePath]
-Count=1
-Item0=$(BCB)\source\vcl
+        [HistoryLists\hlConditionals]
+        Count=1
+        Item0=_DEBUG
 
-[HistoryLists\hlConditionals]
-Count=1
-Item0=_DEBUG
+        [Debugging]
+        DebugSourceDirs=$(BCB)\source\vcl
 
-[Debugging]
-DebugSourceDirs=$(BCB)\source\vcl
+        [Parameters]
+        RunParams=
+        Launcher=
+        UseLauncher=0
+        DebugCWD=
+        HostApplication=
+        RemoteHost=
+        RemotePath=
+        RemoteLauncher=
+        RemoteCWD=
+        RemoteDebug=0
 
-[Parameters]
-RunParams=
-Launcher=
-UseLauncher=0
-DebugCWD=
-HostApplication=
-RemoteHost=
-RemotePath=
-RemoteLauncher=
-RemoteCWD=
-RemoteDebug=0
-
-[Compiler]
-ShowInfoMsgs=0
-LinkDebugVcl=0
-  </IDEOPTIONS>
+        [Compiler]
+        ShowInfoMsgs=0
+        LinkDebugVcl=0
+    </IDEOPTIONS>
 </PROJECT>

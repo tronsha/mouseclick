@@ -1,6 +1,6 @@
-object MausForm: TMausForm
-  Left = 734
-  Top = 636
+object MouseClickForm: TMouseClickForm
+  Left = 0
+  Top = 0
   Cursor = crArrow
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsNone
@@ -18,7 +18,7 @@ object MausForm: TMausForm
   Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object ImagePfeil: TImage
+  object ImageArrow: TImage
     Left = 0
     Top = 80
     Width = 35
@@ -135,17 +135,17 @@ object MausForm: TMausForm
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000}
-    OnMouseDown = ImagePfeilMouseDown
-    OnMouseMove = ImagePfeilMouseMove
+    OnMouseDown = ImageArrowMouseDown
+    OnMouseMove = ImageArrowMouseMove
   end
-  object PanelZiel: TPanel
+  object PanelSetPosition: TPanel
     Left = 8
     Top = 8
     Width = 89
     Height = 57
     BorderStyle = bsSingle
     TabOrder = 0
-    object Label_x: TLabel
+    object LabelX: TLabel
       Left = 8
       Top = 8
       Width = 24
@@ -158,7 +158,7 @@ object MausForm: TMausForm
       Font.Style = []
       ParentFont = False
     end
-    object Label_y: TLabel
+    object LabelY: TLabel
       Left = 8
       Top = 30
       Width = 23
@@ -171,7 +171,7 @@ object MausForm: TMausForm
       Font.Style = []
       ParentFont = False
     end
-    object Edit_x: TEdit
+    object EditX: TEdit
       Left = 40
       Top = 8
       Width = 33
@@ -181,7 +181,7 @@ object MausForm: TMausForm
       Text = '0'
       OnKeyPress = EditKeyPress
     end
-    object Edit_y: TEdit
+    object EditY: TEdit
       Left = 40
       Top = 28
       Width = 33
@@ -192,20 +192,20 @@ object MausForm: TMausForm
       OnKeyPress = EditKeyPress
     end
   end
-  object PanelOrt: TPanel
+  object PanelCurrentPosition: TPanel
     Left = 48
     Top = 80
     Width = 49
     Height = 49
     BorderStyle = bsSingle
     TabOrder = 1
-    object Label_x_now: TLabel
+    object LabelCurrentX: TLabel
       Left = 8
       Top = 8
       Width = 3
       Height = 13
     end
-    object Label_y_now: TLabel
+    object LabelCurrentY: TLabel
       Left = 8
       Top = 24
       Width = 3
@@ -243,23 +243,23 @@ object MausForm: TMausForm
       OnKeyUp = EditTimerKeyUp
     end
   end
-  object EndeButton: TButton
+  object ExitButton: TButton
     Left = 144
     Top = 160
     Width = 60
     Height = 25
     Caption = 'Exit (F4)'
     TabOrder = 3
-    OnClick = EndeButtonClick
+    OnClick = ExitButtonClick
   end
-  object GetOrtButton: TButton
+  object SetButton: TButton
     Left = 144
     Top = 16
     Width = 60
     Height = 25
     Caption = 'Set (F1)'
     TabOrder = 4
-    OnClick = GetOrtButtonClick
+    OnClick = SetButtonClick
   end
   object StopButton: TButton
     Left = 144
@@ -333,8 +333,8 @@ object MausForm: TMausForm
   object MainMenu1: TMainMenu
     Left = 104
     Top = 72
-    object Datei1: TMenuItem
-      Caption = 'Datei'
+    object File1: TMenuItem
+      Caption = 'File'
       Visible = False
       object MenuSet: TMenuItem
         Caption = 'Set'
@@ -358,38 +358,38 @@ object MausForm: TMausForm
         OnClick = MenuExitClick
       end
     end
-    object Extra1: TMenuItem
-      Caption = 'Extra'
+    object Options1: TMenuItem
+      Caption = 'Options'
       Visible = False
-      object rechts1: TMenuItem
-        Caption = 'rechts'
+      object RightMouseMode1: TMenuItem
+        Caption = 'Right Mouse Mode'
         ShortCut = 16466
-        OnClick = rechts1Click
+        OnClick = RightMouseMode1Click
       end
-      object links1: TMenuItem
-        Caption = 'links'
+      object LeftMouseMode1: TMenuItem
+        Caption = 'Left Mouse Mode'
         ShortCut = 16460
-        OnClick = links1Click
+        OnClick = LeftMouseMode1Click
       end
-      object sekunden1: TMenuItem
-        Caption = 'sekunden'
+      object KeyMode1: TMenuItem
+        Caption = 'Key Mode'
+        ShortCut = 16459
+        OnClick = KeyMode1Click
+      end
+      object Seconds1: TMenuItem
+        Caption = 'Seconds'
         ShortCut = 16467
-        OnClick = sekunden1Click
+        OnClick = Seconds1Click
       end
-      object millisekunden1: TMenuItem
-        Caption = 'millisekunden'
+      object Milliseconds1: TMenuItem
+        Caption = 'Milliseconds'
         ShortCut = 16461
-        OnClick = millisekunden1Click
+        OnClick = Milliseconds1Click
       end
-      object taste1: TMenuItem
-        Caption = 'taste'
-        ShortCut = 16468
-        OnClick = taste1Click
-      end
-      object random1: TMenuItem
-        Caption = 'random'
+      object Random1: TMenuItem
+        Caption = 'Random'
         ShortCut = 16466
-        OnClick = random1Click
+        OnClick = Random1Click
       end
     end
   end
