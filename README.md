@@ -1,2 +1,2 @@
-MausKlick
-=========
+MouseClick
+==========
