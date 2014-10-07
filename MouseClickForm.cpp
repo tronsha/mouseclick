@@ -16,9 +16,10 @@ __fastcall TMouseClickForm::TMouseClickForm(TComponent* Owner) : TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-#define arrow_top 90
-#define arrow_left -5
-
+#define ARROW_TOP 90
+#define ARROW_LEFT -5
+int oldMouseX;
+int oldMouseY;
 int mode = 0;
 int milli = 1000;
 //---------------------------------------------------------------------------
@@ -28,12 +29,12 @@ void __fastcall TMouseClickForm::MouseTimerTimer(TObject *Sender)
     int x = MouseClickForm->EditX->Text.ToInt();
     int y = MouseClickForm->EditY->Text.ToInt();
 
-    int randzeit = rand()%180+60;
+    int randomtime = rand()%180+60;
 
     if(Random1->Checked == true)
     {
-        EditTimer->Text = randzeit;
-        MouseClickForm->MouseTimer->Interval = randzeit*milli;
+        EditTimer->Text = randomtime;
+        MouseClickForm->MouseTimer->Interval = randomtime*milli;
     }
 
     if(mode == 2)
@@ -111,8 +112,8 @@ void __fastcall TMouseClickForm::StartButtonClick(TObject *Sender)
 
 void __fastcall TMouseClickForm::SetButtonClick(TObject *Sender)
 {
-    EditX->Text = MouseClickForm->Left + arrow_left;
-    EditY->Text = MouseClickForm->Top + arrow_top;
+    EditX->Text = MouseClickForm->Left + ARROW_LEFT;
+    EditY->Text = MouseClickForm->Top + ARROW_TOP;
 }
 //---------------------------------------------------------------------------
 
@@ -137,38 +138,36 @@ void __fastcall TMouseClickForm::ExitButtonClick(TObject *Sender)
     Close();
 }
 //---------------------------------------------------------------------------
-int igOldMouseX, igOldMouseY;
-//---------------------------------------------------------------------------
 
 void __fastcall TMouseClickForm::ImageArrowMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
     if(Button == mbLeft)
     {
-        igOldMouseX = X;
-        igOldMouseY = Y;
+        oldMouseX = X;
+        oldMouseY = Y;
     }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMouseClickForm::ImageArrowMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 {
-    int iDeltaX, iDeltaY;
+    int deltaX, deltaY;
     if(Shift.Contains(ssLeft))
     {
-        iDeltaX = X - igOldMouseX;
-        iDeltaY = Y - igOldMouseY;
-        Top = Top + iDeltaY;
-        Left = Left + iDeltaX;
+        deltaX = X - oldMouseX;
+        deltaY = Y - oldMouseY;
+        Top = Top + deltaY;
+        Left = Left + deltaX;
     }
-    LabelCurrentX->Caption = MouseClickForm->Left + arrow_left;
-    LabelCurrentY->Caption = MouseClickForm->Top + arrow_top;
+    LabelCurrentX->Caption = MouseClickForm->Left + ARROW_LEFT;
+    LabelCurrentY->Caption = MouseClickForm->Top + ARROW_TOP;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMouseClickForm::MenuSetClick(TObject *Sender)
 {
-    EditX->Text = MouseClickForm->Left + arrow_left;
-    EditY->Text = MouseClickForm->Top + arrow_top;
+    EditX->Text = MouseClickForm->Left + ARROW_LEFT;
+    EditY->Text = MouseClickForm->Top + ARROW_TOP;
 }
 //---------------------------------------------------------------------------
 
@@ -230,14 +229,14 @@ void __fastcall TMouseClickForm::EditTimerKeyUp(TObject *Sender, WORD &Key, TShi
     {
         if(milli == 1)
         {
-            double zeit = EditTimer->Text.ToDouble();
-            if (zeit > 86400000)
+            double time = EditTimer->Text.ToDouble();
+            if (time > 86400000)
                 EditTimer->Text = "86400000";
         }
         else if(milli == 1000)
         {
-            double zeit = EditTimer->Text.ToDouble();
-            if(zeit > 86400)
+            double time = EditTimer->Text.ToDouble();
+            if(time > 86400)
                 EditTimer->Text = "86400";
         }
     }
@@ -252,8 +251,8 @@ void __fastcall TMouseClickForm::Seconds1Click(TObject *Sender)
         ShowMessage("Timer in Seconds");
         if(EditTimer->Text != "")
         {
-            double zeit = EditTimer->Text.ToDouble();
-            EditTimer->Text = zeit / 1000;
+            double time = EditTimer->Text.ToDouble();
+            EditTimer->Text = time / 1000;
         }
     }
 }
@@ -267,8 +266,8 @@ void __fastcall TMouseClickForm::Milliseconds1Click(TObject *Sender)
         ShowMessage("Timer in Milliseconds");
         if(EditTimer->Text != "")
         {
-            double zeit = EditTimer->Text.ToDouble();
-            EditTimer->Text = zeit * 1000;
+            double time = EditTimer->Text.ToDouble();
+            EditTimer->Text = time * 1000;
         }
     }
 }
