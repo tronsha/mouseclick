@@ -1,6 +1,8 @@
 MouseClick
 ==========
 
+![](screenshot.png)
+
 ## Shortcuts
 
 * F1 - Set Position
