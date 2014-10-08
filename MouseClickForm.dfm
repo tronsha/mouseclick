@@ -378,17 +378,17 @@ object MouseClickForm: TMouseClickForm
       end
       object Seconds1: TMenuItem
         Caption = 'Seconds'
-        ShortCut = 16467
+        ShortCut = 24659
         OnClick = Seconds1Click
       end
       object Milliseconds1: TMenuItem
         Caption = 'Milliseconds'
-        ShortCut = 16461
+        ShortCut = 24653
         OnClick = Milliseconds1Click
       end
       object Random1: TMenuItem
         Caption = 'Random'
-        ShortCut = 16466
+        ShortCut = 24658
         OnClick = Random1Click
       end
     end
