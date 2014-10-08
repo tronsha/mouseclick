@@ -1,6 +1,13 @@
 MouseClick
 ==========
 
+## Shortcuts
+
+* F1 - Set Position
+* F2 - Start Timer
+* F3 - Stop Timer
+* F4 - Close Program
+
 ## Author
 * [Stefan Hüsges][1]
 
