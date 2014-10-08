@@ -7,6 +7,9 @@ MouseClick
 * F2 - Start Timer
 * F3 - Stop Timer
 * F4 - Close Program
+* Ctrl + L - Left Mousebutton
+* Ctrl + R - Right Mousebutton
+* Ctrl + K - Key Mode
 
 ## Author
 * [Stefan Hüsges][1]
