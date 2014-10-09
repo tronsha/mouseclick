@@ -1,6 +1,8 @@
 MouseClick
 ==========
 
+This program is written and compiled with the Borland C++ Builder 6
+
 ## Creator
 
 **Stefan Hüsges**
