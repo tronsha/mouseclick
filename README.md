@@ -1,20 +1,22 @@
 MouseClick
 ==========
 
+## Author
+* [Stefan Hüsges][1]
+ 
+## Screenshot
+
 ![](screenshot.png)
 
 ## Shortcuts
 
-* F1 - Set Position
-* F2 - Start Timer
-* F3 - Stop Timer
-* F4 - Close Program
-* Ctrl + L - Left Mousebutton Mode
-* Ctrl + R - Right Mousebutton Mode
-* Ctrl + K - Key Mode
-
-## Author
-* [Stefan Hüsges][1]
+* F1 - position set
+* F2 - start timer
+* F3 - stop timer
+* F4 - exit program
+* Ctrl + L - left click mode
+* Ctrl + R - right click mode
+* Ctrl + K - keyboard mode
 
 ## License
 [![GNU General Public License](http://www.gnu.org/graphics/gplv3-127x51.png)][2]
