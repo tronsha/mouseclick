@@ -1,7 +1,7 @@
 MouseClick
 ==========
 
-## Creators
+## Creator
 
 **Stefan Hüsges**
 
