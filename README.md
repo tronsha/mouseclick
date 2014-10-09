@@ -20,6 +20,7 @@ This program is written and compiled with the Borland C++ Builder 6
 * F2 - start timer
 * F3 - stop timer
 * F4 - exit program
+* F9 - view license
 * Ctrl + L - left click mode
 * Ctrl + R - right click mode
 * Ctrl + K - keyboard mode

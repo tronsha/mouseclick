@@ -46,6 +46,8 @@ __published:	// IDE-managed Components
         TMenuItem *KeyMode1;
         TMenuItem *Random1;
         TComboBox *ComboBox;
+        TButton *AboutButton;
+        TMenuItem *AboutMenu;
         void __fastcall MouseTimerTimer(TObject *Sender);
         void __fastcall FocusTimerTimer(TObject *Sender);
         void __fastcall StartButtonClick(TObject *Sender);
@@ -66,6 +68,8 @@ __published:	// IDE-managed Components
         void __fastcall LeftMouseMode1Click(TObject *Sender);
         void __fastcall KeyMode1Click(TObject *Sender);
         void __fastcall Random1Click(TObject *Sender);
+        void __fastcall AboutButtonClick(TObject *Sender);
+        void __fastcall AboutMenuClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations

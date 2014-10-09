@@ -78,67 +78,6 @@ void __fastcall TMouseClickForm::EditKeyPress(TObject *Sender, char &Key)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMouseClickForm::StartButtonClick(TObject *Sender)
-{
-    if(milli == 1000)
-    {
-        if (MouseClickForm->EditTimer->Text.ToInt() < 10)
-        {
-            MouseClickForm->EditTimer->Text = 10;
-        }
-    }
-    else if(milli == 1)
-    {
-        if (MouseClickForm->EditTimer->Text.ToInt() < 10000)
-        {
-            MouseClickForm->EditTimer->Text = 10000;
-        }
-    }
-
-    MouseClickForm->MouseTimer->Interval = MouseClickForm->EditTimer->Text.ToInt()*milli;
-    MouseClickForm->MouseTimer->Enabled = true;
-    MouseClickForm->StopButton->Enabled = true;
-    MouseClickForm->StartButton->Enabled = false;
-    MouseClickForm->SetButton->Enabled = false;
-    MouseClickForm->MenuStop->Enabled = true;
-    MouseClickForm->MenuStart->Enabled = false;
-    MouseClickForm->MenuSet->Enabled = false;
-    MouseClickForm->EditX->Enabled = false;
-    MouseClickForm->EditY->Enabled = false;
-    MouseClickForm->EditTimer->Enabled = false;
-    MouseClickForm->ComboBox->Enabled = false;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::SetButtonClick(TObject *Sender)
-{
-    EditX->Text = MouseClickForm->Left + ARROW_LEFT;
-    EditY->Text = MouseClickForm->Top + ARROW_TOP;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::StopButtonClick(TObject *Sender)
-{
-    MouseClickForm->MouseTimer->Enabled = false;
-    MouseClickForm->StopButton->Enabled = false;
-    MouseClickForm->StartButton->Enabled = true;
-    MouseClickForm->SetButton->Enabled = true;
-    MouseClickForm->MenuStop->Enabled = false;
-    MouseClickForm->MenuStart->Enabled = true;
-    MouseClickForm->MenuSet->Enabled = true;
-    MouseClickForm->EditX->Enabled = true;
-    MouseClickForm->EditY->Enabled = true;
-    MouseClickForm->EditTimer->Enabled = true;
-    MouseClickForm->ComboBox->Enabled = true;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::ExitButtonClick(TObject *Sender)
-{
-    Close();
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TMouseClickForm::ImageArrowMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
     if(Button == mbLeft)
@@ -161,65 +100,6 @@ void __fastcall TMouseClickForm::ImageArrowMouseMove(TObject *Sender, TShiftStat
     }
     LabelCurrentX->Caption = MouseClickForm->Left + ARROW_LEFT;
     LabelCurrentY->Caption = MouseClickForm->Top + ARROW_TOP;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::MenuSetClick(TObject *Sender)
-{
-    EditX->Text = MouseClickForm->Left + ARROW_LEFT;
-    EditY->Text = MouseClickForm->Top + ARROW_TOP;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::MenuExitClick(TObject *Sender)
-{
-    Close();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::MenuStartClick(TObject *Sender)
-{
-    if(milli == 1000)
-    {
-        if(MouseClickForm->EditTimer->Text.ToInt() < 10)
-        {
-            MouseClickForm->EditTimer->Text = 10;
-        }
-    }
-    else if(milli == 1)
-    {
-        if(MouseClickForm->EditTimer->Text.ToInt() < 10000)
-        {
-            MouseClickForm->EditTimer->Text = 10000;
-        }
-    }
-
-    MouseClickForm->MouseTimer->Interval = MouseClickForm->EditTimer->Text.ToInt()*milli;
-    MouseClickForm->MouseTimer->Enabled = true;
-    MouseClickForm->StopButton->Enabled = true;
-    MouseClickForm->StartButton->Enabled = false;
-    MouseClickForm->SetButton->Enabled = false;
-    MouseClickForm->MenuStop->Enabled = true;
-    MouseClickForm->MenuStart->Enabled = false;
-    MouseClickForm->MenuSet->Enabled = false;
-    MouseClickForm->EditX->Enabled = false;
-    MouseClickForm->EditY->Enabled = false;
-    MouseClickForm->EditTimer->Enabled = false;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMouseClickForm::MenuStopClick(TObject *Sender)
-{
-    MouseClickForm->MouseTimer->Enabled = false;
-    MouseClickForm->StopButton->Enabled = false;
-    MouseClickForm->StartButton->Enabled = true;
-    MouseClickForm->SetButton->Enabled = true;
-    MouseClickForm->MenuStop->Enabled = false;
-    MouseClickForm->MenuStart->Enabled = true;
-    MouseClickForm->MenuSet->Enabled = true;
-    MouseClickForm->EditX->Enabled = true;
-    MouseClickForm->EditY->Enabled = true;
-    MouseClickForm->EditTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
@@ -273,6 +153,114 @@ void __fastcall TMouseClickForm::Milliseconds1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TMouseClickForm::SetButtonClick(TObject *Sender)
+{
+    EditX->Text = MouseClickForm->Left + ARROW_LEFT;
+    EditY->Text = MouseClickForm->Top + ARROW_TOP;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::MenuSetClick(TObject *Sender)
+{
+    EditX->Text = MouseClickForm->Left + ARROW_LEFT;
+    EditY->Text = MouseClickForm->Top + ARROW_TOP;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::StartButtonClick(TObject *Sender)
+{
+    if(milli == 1000)
+    {
+        if (MouseClickForm->EditTimer->Text.ToInt() < 10)
+        {
+            MouseClickForm->EditTimer->Text = 10;
+        }
+    }
+    else if(milli == 1)
+    {
+        if (MouseClickForm->EditTimer->Text.ToInt() < 10000)
+        {
+            MouseClickForm->EditTimer->Text = 10000;
+        }
+    }
+
+    MouseClickForm->MouseTimer->Interval = MouseClickForm->EditTimer->Text.ToInt()*milli;
+    MouseClickForm->MouseTimer->Enabled = true;
+    MouseClickForm->StopButton->Enabled = true;
+    MouseClickForm->StartButton->Enabled = false;
+    MouseClickForm->SetButton->Enabled = false;
+    MouseClickForm->MenuStop->Enabled = true;
+    MouseClickForm->MenuStart->Enabled = false;
+    MouseClickForm->MenuSet->Enabled = false;
+    MouseClickForm->EditX->Enabled = false;
+    MouseClickForm->EditY->Enabled = false;
+    MouseClickForm->EditTimer->Enabled = false;
+    MouseClickForm->ComboBox->Enabled = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::MenuStartClick(TObject *Sender)
+{
+    if(milli == 1000)
+    {
+        if(MouseClickForm->EditTimer->Text.ToInt() < 10)
+        {
+            MouseClickForm->EditTimer->Text = 10;
+        }
+    }
+    else if(milli == 1)
+    {
+        if(MouseClickForm->EditTimer->Text.ToInt() < 10000)
+        {
+            MouseClickForm->EditTimer->Text = 10000;
+        }
+    }
+
+    MouseClickForm->MouseTimer->Interval = MouseClickForm->EditTimer->Text.ToInt()*milli;
+    MouseClickForm->MouseTimer->Enabled = true;
+    MouseClickForm->StopButton->Enabled = true;
+    MouseClickForm->StartButton->Enabled = false;
+    MouseClickForm->SetButton->Enabled = false;
+    MouseClickForm->MenuStop->Enabled = true;
+    MouseClickForm->MenuStart->Enabled = false;
+    MouseClickForm->MenuSet->Enabled = false;
+    MouseClickForm->EditX->Enabled = false;
+    MouseClickForm->EditY->Enabled = false;
+    MouseClickForm->EditTimer->Enabled = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::StopButtonClick(TObject *Sender)
+{
+    MouseClickForm->MouseTimer->Enabled = false;
+    MouseClickForm->StopButton->Enabled = false;
+    MouseClickForm->StartButton->Enabled = true;
+    MouseClickForm->SetButton->Enabled = true;
+    MouseClickForm->MenuStop->Enabled = false;
+    MouseClickForm->MenuStart->Enabled = true;
+    MouseClickForm->MenuSet->Enabled = true;
+    MouseClickForm->EditX->Enabled = true;
+    MouseClickForm->EditY->Enabled = true;
+    MouseClickForm->EditTimer->Enabled = true;
+    MouseClickForm->ComboBox->Enabled = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::MenuStopClick(TObject *Sender)
+{
+    MouseClickForm->MouseTimer->Enabled = false;
+    MouseClickForm->StopButton->Enabled = false;
+    MouseClickForm->StartButton->Enabled = true;
+    MouseClickForm->SetButton->Enabled = true;
+    MouseClickForm->MenuStop->Enabled = false;
+    MouseClickForm->MenuStart->Enabled = true;
+    MouseClickForm->MenuSet->Enabled = true;
+    MouseClickForm->EditX->Enabled = true;
+    MouseClickForm->EditY->Enabled = true;
+    MouseClickForm->EditTimer->Enabled = true;
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TMouseClickForm::RightMouseMode1Click(TObject *Sender)
 {
     mode = 1;
@@ -318,3 +306,44 @@ void __fastcall TMouseClickForm::Random1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TMouseClickForm::ExitButtonClick(TObject *Sender)
+{
+    Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::MenuExitClick(TObject *Sender)
+{
+    Close();
+}
+//---------------------------------------------------------------------------
+
+void about()
+{
+    AnsiString strLicense = "MouseClick / MausKlick\n";
+    strLicense += "Copyright (c) 2003 - 2014 by Stefan Hüsges\n\n";
+    strLicense += "This program is free software: you can redistribute it and/or modify ";
+    strLicense += "it under the terms of the GNU General Public License as published by ";
+    strLicense += "the Free Software Foundation, either version 3 of the License, or ";
+    strLicense += "(at your option) any later version.\n\n";
+    strLicense += "This program is distributed in the hope that it will be useful, ";
+    strLicense += "but WITHOUT ANY WARRANTY; without even the implied warranty of ";
+    strLicense += "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the ";
+    strLicense += "GNU General Public License for more details.\n\n";                                                                                                   \
+    strLicense += "You should have received a copy of the GNU General Public License";
+    strLicense += "along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+    MessageBox(Application->Handle, strLicense.c_str(), "License", MB_OK);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::AboutButtonClick(TObject *Sender)
+{
+    about();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMouseClickForm::AboutMenuClick(TObject *Sender)
+{
+    about();
+}
+//---------------------------------------------------------------------------

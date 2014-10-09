@@ -245,7 +245,7 @@ object MouseClickForm: TMouseClickForm
   end
   object ExitButton: TButton
     Left = 144
-    Top = 160
+    Top = 120
     Width = 60
     Height = 25
     Caption = 'Exit (F4)'
@@ -254,7 +254,7 @@ object MouseClickForm: TMouseClickForm
   end
   object SetButton: TButton
     Left = 144
-    Top = 16
+    Top = 12
     Width = 60
     Height = 25
     Caption = 'Set (F1)'
@@ -263,7 +263,7 @@ object MouseClickForm: TMouseClickForm
   end
   object StopButton: TButton
     Left = 144
-    Top = 112
+    Top = 84
     Width = 60
     Height = 25
     Caption = 'Stop (F3)'
@@ -273,7 +273,7 @@ object MouseClickForm: TMouseClickForm
   end
   object StartButton: TButton
     Left = 144
-    Top = 64
+    Top = 48
     Width = 60
     Height = 25
     Caption = 'Start (F2)'
@@ -317,6 +317,15 @@ object MouseClickForm: TMouseClickForm
       'Y'
       'Z')
   end
+  object AboutButton: TButton
+    Left = 144
+    Top = 156
+    Width = 60
+    Height = 25
+    Caption = 'About (F9)'
+    TabOrder = 8
+    OnClick = AboutButtonClick
+  end
   object MouseTimer: TTimer
     Enabled = False
     Interval = 10000
@@ -356,6 +365,11 @@ object MouseClickForm: TMouseClickForm
         Caption = 'Exit'
         ShortCut = 115
         OnClick = MenuExitClick
+      end
+      object AboutMenu: TMenuItem
+        Caption = 'About'
+        ShortCut = 120
+        OnClick = AboutMenuClick
       end
     end
     object Options1: TMenuItem
